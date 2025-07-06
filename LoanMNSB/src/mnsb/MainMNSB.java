@@ -11,7 +11,7 @@ import java.awt.Font;
 import java.awt.Color;
 
 public class MainMNSB extends JFrame {
-
+//Dhiraj second msg gold
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 
