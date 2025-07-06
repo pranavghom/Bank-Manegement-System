@@ -12,6 +12,7 @@ import java.awt.Color;
 
 public class MainMNSB extends JFrame {
 //Dhiraj second msg gold
+	/** main gol.id dhiraj \
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 
