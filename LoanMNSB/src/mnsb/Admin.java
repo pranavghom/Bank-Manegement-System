@@ -1,10 +1,21 @@
 package mnsb;
 
-import java.awt.EventQueue;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
+import javax.swing.filechooser.FileNameExtensionFilter;
+
 import java.awt.*;
 import java.awt.event.*;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+
+import org.eclipse.wb.swing.FocusTraversalOnArray;
+import java.awt.Window.Type;
 
 public class Admin extends JFrame {
 
@@ -15,6 +26,18 @@ public class Admin extends JFrame {
 	private JTextField coaadhar;
 	private JTextField comobail;
 	private JTextField coaddress;
+	private JTextField txtaapliname;
+	private JTextField txtaadhar;
+	private JTextField txtaddress;
+	private JTextField txtpan;
+	private JTextField txtocupation;
+	private JTextField txtmobailno;
+	private JTextField txtnamecoappli;
+	private JTextField txtcoaadhar;
+	private JTextField txtcoadress;
+	private JTextField txtcopan;
+	private JTextField txtcoocupation;
+	private JTextField txtcomobailno;
 
 	public static void main(String[] args) {
 		EventQueue.invokeLater(() -> {
@@ -25,12 +48,13 @@ public class Admin extends JFrame {
 				e.printStackTrace();
 			}
 		});
-	}
+}
 
 	public Admin() {
+		setResizable(false);
 		setTitle("Admin Dashboard");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 1288, 854);
+		setBounds(100, 0, 1293, 806);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -38,16 +62,18 @@ public class Admin extends JFrame {
 
 		JPanel headerpanel = new JPanel();
 		headerpanel.setBackground(Color.PINK);
-		headerpanel.setBounds(0, 10, 1080, 156);
+		headerpanel.setBounds(0, 10, 1300, 156);
 		contentPane.add(headerpanel);
 		headerpanel.setLayout(null);
-
-		JLabel lblNewLabel = new JLabel("Admin Panel");
-		lblNewLabel.setFont(new Font("Arial", Font.BOLD, 24));
-		lblNewLabel.setBounds(10, 55, 200, 77);
+		headerpanel.setBorder(BorderFactory.createLineBorder(Color.GRAY, 2));
+		JLabel lblNewLabel = new JLabel("महिला नागरी सहकारी पतसंस्था");
+		lblNewLabel.setBounds(392, 10, 546, 91);
+	
+	
+		lblNewLabel.setFont(new Font("Mangal", Font.BOLD, 20));
 		headerpanel.add(lblNewLabel);
 
-		Slidebar.setBackground(new Color(255, 182, 193));
+		Slidebar.setBackground(Color.PINK);
 		Slidebar.setBounds(0, 166, 145, 601);
 		contentPane.add(Slidebar);
 		Slidebar.setLayout(null);
@@ -57,206 +83,303 @@ public class Admin extends JFrame {
 		reportcombo.setBounds(10, 129, 117, 29);
 		Slidebar.add(reportcombo);
 		
-		JButton createuser = new JButton("Create User");
-		createuser.addActionListener(new ActionListener() {
+	
+		
+		JPanel mainpanel =  new JPanel();
+		mainpanel.setBounds(148, 173, 1126, 594);
+		contentPane.add(mainpanel);
+		mainpanel.setLayout(new CardLayout(0, 0));
+		
+		JPanel pnlcreateuser = new JPanel();
+		mainpanel.add(pnlcreateuser, "createuser");
+		pnlcreateuser.setLayout(null);
+		pnlcreateuser.setBorder(BorderFactory.createLineBorder(Color.GRAY, 2));
+
+		JLabel lblNewLabel_4 = new JLabel("Name Applicant");
+		lblNewLabel_4.setBounds(44, 174, 86, 13);
+		pnlcreateuser.add(lblNewLabel_4);
+		
+		JLabel lblNewLabel_1 = new JLabel("NEW USER");
+		lblNewLabel_1.setFont(new Font("Tahoma", Font.BOLD, 15));
+		lblNewLabel_1.setBounds(-181, 10, 311, 36);
+		pnlcreateuser.add(lblNewLabel_1);
+		
+		JLabel lblNewLabel_4_1 = new JLabel("Aadhar Number");
+		lblNewLabel_4_1.setBounds(58, 219, 72, 13);
+		pnlcreateuser.add(lblNewLabel_4_1);
+		
+		JLabel lblNewLabel_4_1_1 = new JLabel("Addreeas");
+		lblNewLabel_4_1_1.setBounds(85, 279, 45, 13);
+		pnlcreateuser.add(lblNewLabel_4_1_1);
+		
+		JLabel lblNewLabel_4_1_1_1 = new JLabel("Pan Number");
+		lblNewLabel_4_1_1_1.setBounds(44, 332, 56, 13);
+		pnlcreateuser.add(lblNewLabel_4_1_1_1);
+		
+		JLabel lblNewLabel_4_1_1_1_1 = new JLabel("Ocupation ");
+		lblNewLabel_4_1_1_1_1.setBounds(44, 391, 86, 13);
+		pnlcreateuser.add(lblNewLabel_4_1_1_1_1);
+		
+		JLabel lblNewLabel_4_1_1_1_1_1 = new JLabel("Mobail number");
+		lblNewLabel_4_1_1_1_1_1.setBounds(44, 452, 86, 13);
+		pnlcreateuser.add(lblNewLabel_4_1_1_1_1_1);
+		
+		txtaapliname = new JTextField();
+		txtaapliname.setBounds(146, 166, 211, 29);
+		pnlcreateuser.add(txtaapliname);
+		txtaapliname.setColumns(10);
+		
+		txtaadhar = new JTextField();
+		txtaadhar.setColumns(10);
+		txtaadhar.setBounds(146, 211, 211, 29);
+		pnlcreateuser.add(txtaadhar);
+		
+		txtaddress = new JTextField();
+		txtaddress.setColumns(10);
+		txtaddress.setBounds(146, 261, 211, 50);
+		pnlcreateuser.add(txtaddress);
+		
+		txtpan = new JTextField();
+		txtpan.setColumns(10);
+		txtpan.setBounds(146, 324, 211, 29);
+		pnlcreateuser.add(txtpan);
+		
+		txtocupation = new JTextField();
+		txtocupation.setColumns(10);
+		txtocupation.setBounds(146, 383, 211, 29);
+		pnlcreateuser.add(txtocupation);
+		
+		txtmobailno = new JTextField();
+		txtmobailno.setColumns(10);
+		txtmobailno.setBounds(146, 444, 211, 29);
+		pnlcreateuser.add(txtmobailno);
+		
+		txtnamecoappli = new JTextField();
+		txtnamecoappli.setColumns(10);
+		txtnamecoappli.setBounds(579, 166, 241, 29);
+		pnlcreateuser.add(txtnamecoappli);
+		
+		txtcoaadhar = new JTextField();
+		txtcoaadhar.setColumns(10);
+		txtcoaadhar.setBounds(579, 211, 241, 29);
+		pnlcreateuser.add(txtcoaadhar);
+		
+		txtcoadress = new JTextField();
+		txtcoadress.setColumns(10);
+		txtcoadress.setBounds(579, 261, 241, 47);
+		pnlcreateuser.add(txtcoadress);
+		
+		txtcopan = new JTextField();
+		txtcopan.setColumns(10);
+		txtcopan.setBounds(579, 324, 241, 29);
+		pnlcreateuser.add(txtcopan);
+		
+		txtcoocupation = new JTextField();
+		txtcoocupation.setColumns(10);
+		txtcoocupation.setBounds(579, 383, 241, 29);
+		pnlcreateuser.add(txtcoocupation);
+		
+		txtcomobailno = new JTextField();
+		txtcomobailno.setColumns(10);
+		txtcomobailno.setBounds(579, 444, 241, 29);
+		pnlcreateuser.add(txtcomobailno);
+		
+		JLabel lblNewLabel_4_1_1_1_1_2 = new JLabel("Ocupation ");
+		lblNewLabel_4_1_1_1_1_2.setBounds(426, 386, 117, 23);
+		pnlcreateuser.add(lblNewLabel_4_1_1_1_1_2);
+		
+		JLabel lblNewLabel_4_1_1_1_2 = new JLabel("Pan Number");
+		lblNewLabel_4_1_1_1_2.setBounds(426, 332, 117, 13);
+		pnlcreateuser.add(lblNewLabel_4_1_1_1_2);
+		
+		JLabel lblNewLabel_4_1_1_2 = new JLabel("Addreeas");
+		lblNewLabel_4_1_1_2.setBounds(426, 279, 117, 13);
+		pnlcreateuser.add(lblNewLabel_4_1_1_2);
+		
+		JLabel lblNewLabel_4_1_2 = new JLabel("Aadhar Number");
+		lblNewLabel_4_1_2.setBounds(426, 219, 117, 13);
+		pnlcreateuser.add(lblNewLabel_4_1_2);
+		
+		JLabel lblNewLabel_4_2 = new JLabel("Name Co-Applicant");
+		lblNewLabel_4_2.setBounds(426, 174, 142, 13);
+		pnlcreateuser.add(lblNewLabel_4_2);
+		
+		JButton Save = new JButton("SAVE");
+		Save.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
+				
+			
+			
+			
+				
+				
+				
+			
+				try {
+					String url = "jdbc:mysql://localhost:3306/mnsbank";
+					Class.forName("com.mysql.cj.jdbc.Driver");
+					
+				
+					Connection Con = DriverManager.getConnection(url ,"root","root");
+					PreparedStatement st = Con.prepareStatement("Insert into customer(applicantname,apllicantaadhar,applicantaddress,applicantpan,appliancantocupation,applicantmobail,coapplicantname,coappliantaadhar,coapplicantaddress,coapplicantpan,coapllicantocupation,coapplicantmobail,applicantphoto ) values(?,?,?,?,?,?)");
+					st.setString(1,	txtaapliname.getText());
+					st.setString(2,	txtaadhar.getText());
+					st.setString(3,txtaddress.getText());
+					st.setString(4,txtpan.getText());
+					st.setString(5, txtocupation.getText());
+					st.setString(6, txtmobailno.getText());
+					st.setString(7, txtnamecoappli.getText());
+					st.setString(8, txtcoaadhar.getText());
+					st.setString(9, txtcoadress.getText());
+					st.setString(10, txtcopan.getText());
+					st.setString(11, txtcoocupation.getText());
+					st.setString(12, txtcomobailno.getText());
+					
+					//
+					  // FileInputStream fis = new FileInputStream(selectedImageFile[0]);
+		             
+		              //  st.setBinaryStream(6, fis, (int) selectedImageFile[0].length());
+					
+					
+					
+					st.executeUpdate();
+					JOptionPane.showMessageDialog(null,"Succesfully inserted Data In database");
+					Con.close();	
+				
+				
+				} catch (ClassNotFoundException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				} catch (SQLException | HeadlessException ex  ) {
+					JOptionPane.showMessageDialog(null,ex);
+					// TODO Auto-generated catch block
+					ex.printStackTrace();
+				} catch (FileNotFoundException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 				
 			}
 		});
-		createuser.setBounds(10, 59, 117, 37);
-		Slidebar.add(createuser);
+		Save.setBounds(316, 519, 117, 29);
+		pnlcreateuser.add(Save);
 		
+		JButton btnupdate = new JButton("UPDATE");
+		btnupdate.setBounds(476, 519, 117, 29);
+		pnlcreateuser.add(btnupdate);
+		
+		JButton btndelete = new JButton("Delete");
+		btndelete.setBounds(634, 523, 117, 29);
+		pnlcreateuser.add(btndelete);
+		
+		JLabel lblNewLabel_4_1_1_1_1_1_1 = new JLabel("Mobail number");
+		lblNewLabel_4_1_1_1_1_1_1.setBounds(426, 452, 86, 13);
+		pnlcreateuser.add(lblNewLabel_4_1_1_1_1_1_1);
+		
+		JLabel imglbl = new JLabel("New label");
+		imglbl.setBounds(955, 24, 142, 128);
+		pnlcreateuser.add(imglbl);
+		imglbl.setBorder(BorderFactory.createLineBorder(Color.GRAY, 2));
+
+		 JFileChooser fileChooser = new JFileChooser();
+	        FileNameExtensionFilter filter = new FileNameExtensionFilter(
+	                "Image Files", "jpg", "jpeg", "png", "gif");
+	        fileChooser.setFileFilter(filter);
+	        final File[] selectedImageFile = {null};
+	        
+		
+		JButton cbtnclear = new JButton("CLEAR");
+		cbtnclear.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				clearfields();
+			}
+		});
+		cbtnclear.setBounds(145, 519, 117, 29);
+		pnlcreateuser.add(cbtnclear);
+		
+		JButton btnNewButton = new JButton("Add Photo");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				  JFileChooser chooser = new JFileChooser();
+		            FileNameExtensionFilter filter = new FileNameExtensionFilter("Images", "jpg", "png", "jpeg");
+		            chooser.setFileFilter(filter);
+
+		            int result = chooser.showOpenDialog(null);
+		            if (result == JFileChooser.APPROVE_OPTION) {
+		                selectedImageFile[0] = chooser.getSelectedFile();
+		                ImageIcon icon = new ImageIcon(selectedImageFile[0].getAbsolutePath());
+		                Image img = icon.getImage().getScaledInstance(200, 200, Image.SCALE_SMOOTH);
+		                imglbl.setIcon(new ImageIcon(img));
+		            }}
+	
+			
+		});
+		btnNewButton.setBounds(965, 170, 117, 21);
+		pnlcreateuser.add(btnNewButton);
+		
+		JPanel pnlreport = new JPanel();
+		pnlreport.setBackground(SystemColor.inactiveCaption);
+		mainpanel.add(pnlreport, "report");
+		
+		JLabel lblNewLabel_2 = new JLabel("REPORT");
+		pnlreport.add(lblNewLabel_2);
+		
+		JPanel pnlloans = new JPanel();
+		mainpanel.add(pnlloans, "loan");
+		
+		JLabel lblNewLabel_3 = new JLabel("New label");
+		pnlloans.add(lblNewLabel_3);
+		mainpanel.setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{lblNewLabel_1, pnlreport, lblNewLabel_2, pnlcreateuser, pnlloans, lblNewLabel_3, lblNewLabel_4, lblNewLabel_4_1, lblNewLabel_4_1_1, lblNewLabel_4_1_1_1, lblNewLabel_4_1_1_1_1, lblNewLabel_4_1_1_1_1_1, txtaapliname, txtaadhar, txtaddress, txtpan, txtocupation, txtmobailno, txtnamecoappli, txtcoaadhar, txtcoadress, txtcopan, txtcoocupation, txtcomobailno, lblNewLabel_4_1_1_1_1_2, lblNewLabel_4_1_1_1_2, lblNewLabel_4_1_1_2, lblNewLabel_4_1_2, lblNewLabel_4_2, Save, btnupdate, btndelete, lblNewLabel_4_1_1_1_1_1_1, imglbl, cbtnclear, btnNewButton}));
+		
+		
+		JButton createuser = new JButton("Create User");
+		createuser.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				CardLayout cl = ((CardLayout) mainpanel.getLayout());
+				cl.show(mainpanel, "createuser");
+			}
+		
+		});
+		
+		
+		
+		createuser.setBounds(10, 59, 117, 29);
+		Slidebar.add(createuser);
+
 		JButton Loans = new JButton("Loans");
 		Loans.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				CardLayout cl = ((CardLayout) mainpanel.getLayout());
+				cl.show(mainpanel, "loan");
 				System.out.print("helloloan button preesed");
 				
 			}
 		});
-		Loans.setBounds(10, 191, 117, 37);
+		Loans.setBounds(10, 191, 117, 29);
 		Slidebar.add(Loans);
 		
-	
+	}
+		
+	void clearfields() {
+		txtaapliname.setText("");
+		txtaadhar.setText("");
+		txtaddress.setText("");
+		txtpan.setText("");
+		txtocupation.setText("");
+		txtmobailno.setText("");
+		txtnamecoappli.setText("");
+		txtcoaadhar.setText("");
+		txtcoadress.setText("");
+		txtcopan.setText("");
+		txtcoocupation.setText("");
+		txtcomobailno.setText("");
+	}
 
-		 createuserpanel();
+		// createuserpanel();
 		
 	//loan();
 		
 		
-	}
 	
-	
-	void loan() {
-		
-		JPanel panel = new JPanel();
-		panel.setBounds(155, 176, 972, 594);
-		contentPane.add(panel);
-		panel.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
-		
-		JButton btnNewButton_3 = new JButton("New button");
-		panel.add(btnNewButton_3);
-		
-		JButton btnNewButton_1 = new JButton("New button");
-		panel.add(btnNewButton_1);
-		
-		JButton btnNewButton_2 = new JButton("New button");
-		panel.add(btnNewButton_2);
-		
-		JButton btnNewButton_1_2 = new JButton("New button");
-		panel.add(btnNewButton_1_2);
-		
-		JButton btnNewButton_1_1 = new JButton("New button");
-		panel.add(btnNewButton_1_1);
-		
-		JButton btnNewButton = new JButton("New button");
-		panel.add(btnNewButton);
-	}
-	
-	void createuserpanel() {
-		
-		JPanel createuserpanel = new JPanel();
-		createuserpanel.setBounds(155, 176, 894, 594);
-		
-		createuserpanel.setLayout(null);
-		contentPane.add(createuserpanel);
-
-		// Fonts
-		Font labelFont = new Font("Segoe UI", Font.BOLD, 14);
-		Font inputFont = new Font("Segoe UI", Font.PLAIN, 14);
-
-		// Labels and Fields
-		JLabel lblName = new JLabel("Name Of Applicant:");
-		lblName.setBounds(20, 194, 139, 30);
-		lblName.setFont(labelFont);
-		createuserpanel.add(lblName);
-
-		JTextField txtName = new JTextField();
-		txtName.setBounds(169, 426, 250, 30);
-		txtName.setFont(inputFont);
-		createuserpanel.add(txtName);
-
-		JLabel lblAddress = new JLabel("Address:");
-		lblAddress.setBounds(20, 329, 89, 30);
-		lblAddress.setFont(labelFont);
-		createuserpanel.add(lblAddress);
-
-		JTextField txtAddress = new JTextField();
-		txtAddress.setBounds(169, 314, 250, 61);
-		txtAddress.setFont(inputFont);
-		createuserpanel.add(txtAddress);
-
-		JLabel lblAadhar = new JLabel("Aadhar No:");
-		lblAadhar.setBounds(20, 234, 100, 30);
-		lblAadhar.setFont(labelFont);
-		createuserpanel.add(lblAadhar);
-
-		JTextField txtAadhar = new JTextField();
-		txtAadhar.setBounds(169, 385, 250, 30);
-		txtAadhar.setFont(inputFont);
-		createuserpanel.add(txtAadhar);
-
-		JLabel lblPan = new JLabel("PAN No:");
-		lblPan.setBounds(20, 274, 100, 30);
-		lblPan.setFont(labelFont);
-		createuserpanel.add(lblPan);
-
-		JTextField txtPan = new JTextField();
-		txtPan.setBounds(169, 274, 250, 30);
-		txtPan.setFont(inputFont);
-		createuserpanel.add(txtPan);
-
-		JLabel lblOccupation = new JLabel("Occupation:");
-		lblOccupation.setBounds(20, 385, 100, 30);
-		lblOccupation.setFont(labelFont);
-		createuserpanel.add(lblOccupation);
-
-		JTextField txtOccupation = new JTextField();
-		txtOccupation.setBounds(169, 234, 250, 30);
-		txtOccupation.setFont(inputFont);
-		createuserpanel.add(txtOccupation);
-
-		JLabel lblMobile = new JLabel("Mobile No:");
-		lblMobile.setBounds(20, 426, 100, 30);
-		lblMobile.setFont(labelFont);
-		createuserpanel.add(lblMobile);
-
-		JTextField txtMobile = new JTextField();
-		txtMobile.setBounds(169, 194, 250, 30);
-		txtMobile.setFont(inputFont);
-		createuserpanel.add(txtMobile);
-
-		// Save Button
-		JButton btnSave = new JButton("Save");
-		btnSave.setBounds(220, 533, 120, 40);
-		btnSave.setBackground(Color.GRAY);
-		
-		btnSave.setFont(new Font("Segoe UI", Font.BOLD, 16));
-		createuserpanel.add(btnSave);
-		
-		JButton btnupdate = new JButton("Update");
-		btnupdate.setFont(new Font("Segoe UI", Font.BOLD, 16));
-		btnupdate.setBackground(Color.GRAY);
-		btnupdate.setBounds(370, 533, 120, 40);
-		createuserpanel.add(btnupdate);
-		
-		JButton btndelete = new JButton("Delete");
-		btndelete.setFont(new Font("Segoe UI", Font.BOLD, 16));
-		btndelete.setBackground(Color.GRAY);
-		btndelete.setBounds(515, 533, 120, 40);
-		createuserpanel.add(btndelete);
-		
-		JLabel passport = new JLabel("Photo");
-		passport.setDisplayedMnemonic('s');
-		passport.setBounds(20, 29, 132, 140);
-		createuserpanel.add(passport);
-		
-		JLabel lblNameOfCoapplicant = new JLabel("Name Of Coapplicant:");
-		lblNameOfCoapplicant.setFont(new Font("Segoe UI", Font.BOLD, 14));
-		lblNameOfCoapplicant.setBounds(441, 194, 156, 30);
-		createuserpanel.add(lblNameOfCoapplicant);
-		
-		copallicant = new JTextField();
-		copallicant.setFont(new Font("Segoe UI", Font.PLAIN, 14));
-		copallicant.setBounds(607, 194, 250, 30);
-		createuserpanel.add(copallicant);
-		
-		JLabel lblAadhar_1 = new JLabel("Aadhar No:");
-		lblAadhar_1.setFont(new Font("Segoe UI", Font.BOLD, 14));
-		lblAadhar_1.setBounds(458, 241, 100, 30);
-		createuserpanel.add(lblAadhar_1);
-		
-		coaadhar = new JTextField();
-		coaadhar.setFont(new Font("Segoe UI", Font.PLAIN, 14));
-		coaadhar.setBounds(607, 241, 250, 30);
-		createuserpanel.add(coaadhar);
-		
-		comobail = new JTextField();
-		comobail.setFont(new Font("Segoe UI", Font.PLAIN, 14));
-		comobail.setBounds(607, 281, 250, 30);
-		createuserpanel.add(comobail);
-		
-		JLabel lblMobile_1 = new JLabel("Mobile No:");
-		lblMobile_1.setFont(new Font("Segoe UI", Font.BOLD, 14));
-		lblMobile_1.setBounds(458, 281, 100, 30);
-		createuserpanel.add(lblMobile_1);
-		
-		coaddress = new JTextField();
-		coaddress.setFont(new Font("Segoe UI", Font.PLAIN, 14));
-		coaddress.setBounds(607, 327, 250, 61);
-		createuserpanel.add(coaddress);
-		
-		JLabel lblAddress_1 = new JLabel("Address:");
-		lblAddress_1.setFont(new Font("Segoe UI", Font.BOLD, 14));
-		lblAddress_1.setBounds(458, 342, 89, 30);
-		createuserpanel.add(lblAddress_1);
-
-		
-		
-		
-		// Button action (placeholder)
-		btnSave.addActionListener(e -> {
-			JOptionPane.showMessageDialog(this, "User Saved (Not implemented yet)");
-		});
-	
-	}
 }
