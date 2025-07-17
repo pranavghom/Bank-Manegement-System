@@ -207,61 +207,44 @@ public class Admin extends JFrame {
 		JButton Save = new JButton("SAVE");
 		Save.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
-				
 			
-			
-			
-				
-				
-				
-			
-				try {
-					String url = "jdbc:mysql://localhost:3306/mnsbank";
-					Class.forName("com.mysql.cj.jdbc.Driver");
-					
-				
-					Connection Con = DriverManager.getConnection(url ,"root","root");
-					PreparedStatement st = Con.prepareStatement("Insert into customer(applicantname,apllicantaadhar,applicantaddress,applicantpan,appliancantocupation,applicantmobail,coapplicantname,coappliantaadhar,coapplicantaddress,coapplicantpan,coapllicantocupation,coapplicantmobail,applicantphoto ) values(?,?,?,?,?,?)");
-					st.setString(1,	txtaapliname.getText());
-					st.setString(2,	txtaadhar.getText());
-					st.setString(3,txtaddress.getText());
-					st.setString(4,txtpan.getText());
-					st.setString(5, txtocupation.getText());
-					st.setString(6, txtmobailno.getText());
-					st.setString(7, txtnamecoappli.getText());
-					st.setString(8, txtcoaadhar.getText());
-					st.setString(9, txtcoadress.getText());
-					st.setString(10, txtcopan.getText());
-					st.setString(11, txtcoocupation.getText());
-					st.setString(12, txtcomobailno.getText());
-					
-					//
-					  // FileInputStream fis = new FileInputStream(selectedImageFile[0]);
-		             
-		              //  st.setBinaryStream(6, fis, (int) selectedImageFile[0].length());
-					
-					
-					
-					st.executeUpdate();
-					JOptionPane.showMessageDialog(null,"Succesfully inserted Data In database");
-					Con.close();	
-				
-				
-				} catch (ClassNotFoundException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				} catch (SQLException | HeadlessException ex  ) {
-					JOptionPane.showMessageDialog(null,ex);
-					// TODO Auto-generated catch block
-					ex.printStackTrace();
-				} catch (FileNotFoundException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
-				
+				    try {
+				        String url = "jdbc:mysql://localhost:3306/mnsbank";
+				        Class.forName("com.mysql.cj.jdbc.Driver");
+
+				        Connection Con = DriverManager.getConnection(url, "root", "root");
+
+				        String sql ="INSERT INTO customer (applicant_name,applicant_aadhaar,applicant_address,applicant_pan,applicant_occupation,applicant_mobile,coapplicant_name,coapplicant_aadhaar,coapplicant_address,coapplicant_pan,coapplicant_occupation,coapplicant_mobile) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+
+
+				        PreparedStatement st = Con.prepareStatement(sql);
+
+				        st.setString(1,  txtaapliname.getText());
+				        st.setString(2,  txtaadhar.getText());
+				        st.setString(3,  txtaddress.getText());
+				        st.setString(4,  txtpan.getText());
+				        st.setString(5,  txtocupation.getText());
+				        st.setString(6,  txtmobailno.getText());
+				        st.setString(7,  txtnamecoappli.getText());
+				        st.setString(8,  txtcoaadhar.getText());
+				        st.setString(9,  txtcoadress.getText());
+				        st.setString(10, txtcopan.getText());
+				        st.setString(11, txtcoocupation.getText());
+				        st.setString(12, txtcomobailno.getText());
+
+				        int rows = st.executeUpdate();
+				        JOptionPane.showMessageDialog(null, "Successfully inserted Data into database");
+
+				        Con.close();
+
+				    } catch (ClassNotFoundException e1) {
+				        e1.printStackTrace();
+				    } catch (SQLException | HeadlessException ex) {
+				        JOptionPane.showMessageDialog(null, ex);
+				        ex.printStackTrace();
+				    }
 			}
-		});
+});
 		Save.setBounds(316, 519, 117, 29);
 		pnlcreateuser.add(Save);
 		
