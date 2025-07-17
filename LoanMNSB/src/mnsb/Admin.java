@@ -96,6 +96,7 @@ public class Admin extends JFrame {
 		pnlcreateuser.setBorder(BorderFactory.createLineBorder(Color.GRAY, 2));
 
 		JLabel lblNewLabel_4 = new JLabel("Name Applicant");
+		lblNewLabel_4.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		lblNewLabel_4.setBounds(44, 174, 86, 13);
 		pnlcreateuser.add(lblNewLabel_4);
 		
@@ -105,53 +106,58 @@ public class Admin extends JFrame {
 		pnlcreateuser.add(lblNewLabel_1);
 		
 		JLabel lblNewLabel_4_1 = new JLabel("Aadhar Number");
-		lblNewLabel_4_1.setBounds(58, 219, 72, 13);
+		lblNewLabel_4_1.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lblNewLabel_4_1.setBounds(44, 219, 86, 13);
 		pnlcreateuser.add(lblNewLabel_4_1);
 		
 		JLabel lblNewLabel_4_1_1 = new JLabel("Addreeas");
-		lblNewLabel_4_1_1.setBounds(85, 279, 45, 13);
+		lblNewLabel_4_1_1.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lblNewLabel_4_1_1.setBounds(44, 279, 86, 13);
 		pnlcreateuser.add(lblNewLabel_4_1_1);
 		
 		JLabel lblNewLabel_4_1_1_1 = new JLabel("Pan Number");
-		lblNewLabel_4_1_1_1.setBounds(44, 332, 56, 13);
+		lblNewLabel_4_1_1_1.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lblNewLabel_4_1_1_1.setBounds(44, 332, 86, 13);
 		pnlcreateuser.add(lblNewLabel_4_1_1_1);
 		
 		JLabel lblNewLabel_4_1_1_1_1 = new JLabel("Ocupation ");
+		lblNewLabel_4_1_1_1_1.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		lblNewLabel_4_1_1_1_1.setBounds(44, 391, 86, 13);
 		pnlcreateuser.add(lblNewLabel_4_1_1_1_1);
 		
 		JLabel lblNewLabel_4_1_1_1_1_1 = new JLabel("Mobail number");
+		lblNewLabel_4_1_1_1_1_1.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		lblNewLabel_4_1_1_1_1_1.setBounds(44, 452, 86, 13);
 		pnlcreateuser.add(lblNewLabel_4_1_1_1_1_1);
 		
 		txtaapliname = new JTextField();
-		txtaapliname.setBounds(146, 166, 211, 29);
+		txtaapliname.setBounds(165, 166, 211, 29);
 		pnlcreateuser.add(txtaapliname);
 		txtaapliname.setColumns(10);
 		
 		txtaadhar = new JTextField();
 		txtaadhar.setColumns(10);
-		txtaadhar.setBounds(146, 211, 211, 29);
+		txtaadhar.setBounds(165, 211, 211, 29);
 		pnlcreateuser.add(txtaadhar);
 		
 		txtaddress = new JTextField();
 		txtaddress.setColumns(10);
-		txtaddress.setBounds(146, 261, 211, 50);
+		txtaddress.setBounds(165, 261, 211, 50);
 		pnlcreateuser.add(txtaddress);
 		
 		txtpan = new JTextField();
 		txtpan.setColumns(10);
-		txtpan.setBounds(146, 324, 211, 29);
+		txtpan.setBounds(165, 324, 211, 29);
 		pnlcreateuser.add(txtpan);
 		
 		txtocupation = new JTextField();
 		txtocupation.setColumns(10);
-		txtocupation.setBounds(146, 383, 211, 29);
+		txtocupation.setBounds(165, 383, 211, 29);
 		pnlcreateuser.add(txtocupation);
 		
 		txtmobailno = new JTextField();
 		txtmobailno.setColumns(10);
-		txtmobailno.setBounds(146, 444, 211, 29);
+		txtmobailno.setBounds(165, 444, 211, 29);
 		pnlcreateuser.add(txtmobailno);
 		
 		txtnamecoappli = new JTextField();
@@ -185,95 +191,92 @@ public class Admin extends JFrame {
 		pnlcreateuser.add(txtcomobailno);
 		
 		JLabel lblNewLabel_4_1_1_1_1_2 = new JLabel("Ocupation ");
+		lblNewLabel_4_1_1_1_1_2.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		lblNewLabel_4_1_1_1_1_2.setBounds(426, 386, 117, 23);
 		pnlcreateuser.add(lblNewLabel_4_1_1_1_1_2);
 		
 		JLabel lblNewLabel_4_1_1_1_2 = new JLabel("Pan Number");
+		lblNewLabel_4_1_1_1_2.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		lblNewLabel_4_1_1_1_2.setBounds(426, 332, 117, 13);
 		pnlcreateuser.add(lblNewLabel_4_1_1_1_2);
 		
 		JLabel lblNewLabel_4_1_1_2 = new JLabel("Addreeas");
+		lblNewLabel_4_1_1_2.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		lblNewLabel_4_1_1_2.setBounds(426, 279, 117, 13);
 		pnlcreateuser.add(lblNewLabel_4_1_1_2);
 		
 		JLabel lblNewLabel_4_1_2 = new JLabel("Aadhar Number");
+		lblNewLabel_4_1_2.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		lblNewLabel_4_1_2.setBounds(426, 219, 117, 13);
 		pnlcreateuser.add(lblNewLabel_4_1_2);
 		
 		JLabel lblNewLabel_4_2 = new JLabel("Name Co-Applicant");
+		lblNewLabel_4_2.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		lblNewLabel_4_2.setBounds(426, 174, 142, 13);
 		pnlcreateuser.add(lblNewLabel_4_2);
 		
 		JButton Save = new JButton("SAVE");
+		Save.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		Save.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+			if(!validateform()) {
+				JOptionPane.showMessageDialog(null, "Please fill all the required fields.");
+				return;
 				
-				
-			
-			
-			
-				
-				
-				
-			
-				try {
-					String url = "jdbc:mysql://localhost:3306/mnsbank";
-					Class.forName("com.mysql.cj.jdbc.Driver");
-					
-				
-					Connection Con = DriverManager.getConnection(url ,"root","root");
-					PreparedStatement st = Con.prepareStatement("Insert into customer(applicantname,apllicantaadhar,applicantaddress,applicantpan,appliancantocupation,applicantmobail,coapplicantname,coappliantaadhar,coapplicantaddress,coapplicantpan,coapllicantocupation,coapplicantmobail,applicantphoto ) values(?,?,?,?,?,?)");
-					st.setString(1,	txtaapliname.getText());
-					st.setString(2,	txtaadhar.getText());
-					st.setString(3,txtaddress.getText());
-					st.setString(4,txtpan.getText());
-					st.setString(5, txtocupation.getText());
-					st.setString(6, txtmobailno.getText());
-					st.setString(7, txtnamecoappli.getText());
-					st.setString(8, txtcoaadhar.getText());
-					st.setString(9, txtcoadress.getText());
-					st.setString(10, txtcopan.getText());
-					st.setString(11, txtcoocupation.getText());
-					st.setString(12, txtcomobailno.getText());
-					
-					//
-					  // FileInputStream fis = new FileInputStream(selectedImageFile[0]);
-		             
-		              //  st.setBinaryStream(6, fis, (int) selectedImageFile[0].length());
-					
-					
-					
-					st.executeUpdate();
-					JOptionPane.showMessageDialog(null,"Succesfully inserted Data In database");
-					Con.close();	
-				
-				
-				} catch (ClassNotFoundException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				} catch (SQLException | HeadlessException ex  ) {
-					JOptionPane.showMessageDialog(null,ex);
-					// TODO Auto-generated catch block
-					ex.printStackTrace();
-				} catch (FileNotFoundException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
 				}
-				
+				System.out.println("Save button pressed");
+				try {
+				        String url = "jdbc:mysql://localhost:3306/mnsbank";
+				        Class.forName("com.mysql.cj.jdbc.Driver");
+
+				        Connection Con = DriverManager.getConnection(url, "root", "root");
+
+				        String sql ="INSERT INTO customer (applicant_name,applicant_aadhaar,applicant_address,applicant_pan,applicant_occupation,applicant_mobile,coapplicant_name,coapplicant_aadhaar,coapplicant_address,coapplicant_pan,coapplicant_occupation,coapplicant_mobile) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+
+
+				        PreparedStatement st = Con.prepareStatement(sql);
+
+				        st.setString(1,  txtaapliname.getText());
+				        st.setString(2,  txtaadhar.getText());
+				        st.setString(3,  txtaddress.getText());
+				        st.setString(4,  txtpan.getText());
+				        st.setString(5,  txtocupation.getText());
+				        st.setString(6,  txtmobailno.getText());
+				        st.setString(7,  txtnamecoappli.getText());
+				        st.setString(8,  txtcoaadhar.getText());
+				        st.setString(9,  txtcoadress.getText());
+				        st.setString(10, txtcopan.getText());
+				        st.setString(11, txtcoocupation.getText());
+				        st.setString(12, txtcomobailno.getText());
+
+				        int rows = st.executeUpdate();
+				        JOptionPane.showMessageDialog(null, "Successfully inserted Data into database");
+
+				        Con.close();
+
+				    } catch (ClassNotFoundException e1) {
+				        e1.printStackTrace();
+				    } catch (SQLException | HeadlessException ex) {
+				        JOptionPane.showMessageDialog(null, ex);
+				        ex.printStackTrace();
+				    }
 			}
-		});
+});
 		Save.setBounds(316, 519, 117, 29);
 		pnlcreateuser.add(Save);
 		
 		JButton btnupdate = new JButton("UPDATE");
+		btnupdate.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		btnupdate.setBounds(476, 519, 117, 29);
 		pnlcreateuser.add(btnupdate);
 		
 		JButton btndelete = new JButton("Delete");
+		btndelete.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		btndelete.setBounds(634, 523, 117, 29);
 		pnlcreateuser.add(btndelete);
 		
 		JLabel lblNewLabel_4_1_1_1_1_1_1 = new JLabel("Mobail number");
+		lblNewLabel_4_1_1_1_1_1_1.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		lblNewLabel_4_1_1_1_1_1_1.setBounds(426, 452, 86, 13);
 		pnlcreateuser.add(lblNewLabel_4_1_1_1_1_1_1);
 		
@@ -290,6 +293,7 @@ public class Admin extends JFrame {
 	        
 		
 		JButton cbtnclear = new JButton("CLEAR");
+		cbtnclear.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		cbtnclear.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				clearfields();
@@ -359,6 +363,109 @@ public class Admin extends JFrame {
 		Loans.setBounds(10, 191, 117, 29);
 		Slidebar.add(Loans);
 		
+	}
+	
+	public Boolean validateform() {
+		
+		if(txtaadhar.getText().trim().isEmpty() ){
+			 JOptionPane.showMessageDialog(null, "Applicant aadhar is required!");
+			  txtaadhar.requestFocus();
+			return false;
+			
+		}
+		
+		if (txtaapliname.getText().trim().isEmpty()) {
+			   JOptionPane.showMessageDialog(null, "Applicant name is required!");
+				return false;
+
+		} 
+		if( txtaddress.getText().trim().isEmpty()) {
+			   JOptionPane.showMessageDialog(null, "Applicant address is required!");
+				return false;
+		}
+		if(txtpan.getText().trim().isEmpty()) {
+			   JOptionPane.showMessageDialog(null, "Applicant pan is required!");
+				return false;
+		}
+		if(txtocupation.getText().trim().isEmpty()) {
+			   JOptionPane.showMessageDialog(null, "Applicant occupation is required!");
+				return false;
+		}
+		if(txtmobailno.getText().trim().isEmpty()) {
+			   JOptionPane.showMessageDialog(null, "Applicant mobile number is required!");
+				return false;
+		}
+		if(txtnamecoappli.getText().trim().isEmpty()) {
+			   JOptionPane.showMessageDialog(null, "Co-applicant name is required!");
+				return false;
+		}
+		if(txtcoaadhar.getText().trim().isEmpty()) {
+			   JOptionPane.showMessageDialog(null, "Co-applicant aadhar is required!");
+				return false;
+		}
+         	
+		if(txtcoadress.getText().trim().isEmpty()) {
+			   JOptionPane.showMessageDialog(null, "Co-applicant address is required!");
+				return false;
+				}
+		if(txtcopan.getText().trim().isEmpty()) {
+			   JOptionPane.showMessageDialog(null, "Co-applicant pan is required!");
+		return true;
+		}
+		if(txtcoocupation.getText().trim().isEmpty()) {
+			   JOptionPane.showMessageDialog(null, "Co-applicant occupation is required!");
+				return false;
+		}
+		if(txtcomobailno.getText().trim().isEmpty()) {
+			   JOptionPane.showMessageDialog(null, "Co-applicant mobile number is required!");
+				return false;
+		}
+		
+		
+		
+		
+		// Validate length of fields
+		if(txtaadhar.getText().length() != 12) {
+			   JOptionPane.showMessageDialog(null, "Aadhar number must be 12 digits!");
+				return false;
+				}
+		if(txtmobailno.getText().length() != 10) {
+			   JOptionPane.showMessageDialog(null, "Mobile number must be 10 digits!");
+			   	return false;
+			   	
+		}
+		if(txtcomobailno.getText().length() != 10) {
+			   JOptionPane.showMessageDialog(null, "Co-applicant mobile number must be 10 digits!");
+			   	return false;
+			   	
+		}
+		if(txtpan.getText().length() != 10) {
+			   JOptionPane.showMessageDialog(null, "Pan number must be 10 digits!");
+			   	return false;
+			   	
+		
+		}
+		if(txtcopan.getText().length() != 10) {
+			   JOptionPane.showMessageDialog(null, "Co-applicant pan number must be 10 digits!");
+			   	return false;
+		}
+		if(txtaapliname.getText().length() < 3) {
+			   JOptionPane.showMessageDialog(null, "Applicant name must be at least 3 characters long!");
+			   	return false;
+		}
+
+		if(txtnamecoappli.getText().length() < 3) {
+			   JOptionPane.showMessageDialog(null, "Co-applicant name must be at least 3 characters long!");
+			   	return false;
+		}
+
+		if(txtaddress.getText().length()< 5)
+		{
+			JOptionPane.showMessageDialog(null,"Application address must be at least 5 characters long!");
+			return false;
+			
+		}
+				return true;
 	}
 		
 	void clearfields() {
