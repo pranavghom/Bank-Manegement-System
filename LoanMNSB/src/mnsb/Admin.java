@@ -16,6 +16,14 @@ import java.sql.SQLException;
 
 import org.eclipse.wb.swing.FocusTraversalOnArray;
 import java.awt.Window.Type;
+//
+//
+//import com.github.sarxos.webcam.Webcam;
+//import com.github.sarxos.webcam.WebcamPanel;
+//import com.github.sarxos.webcam.WebcamResolution;
+//import java.awt.image.BufferedImage;
+//import javax.imageio.ImageIO;
+
 
 public class Admin extends JFrame {
 
@@ -248,245 +256,258 @@ public class Admin extends JFrame {
 				        st.setString(10, txtcopan.getText());
 				        st.setString(11, txtcoocupation.getText());
 				        st.setString(12, txtcomobailno.getText());
-
-				        int rows = st.executeUpdate();
-				        JOptionPane.showMessageDialog(null, "Successfully inserted Data into database");
-
-				        Con.close();
-
-				    } catch (ClassNotFoundException e1) {
-				        e1.printStackTrace();
-				    } catch (SQLException | HeadlessException ex) {
-				        JOptionPane.showMessageDialog(null, ex);
-				        ex.printStackTrace();
-				    }
-			}
-});
-		Save.setBounds(316, 519, 117, 29);
-		pnlcreateuser.add(Save);
-		
-		JButton btnupdate = new JButton("UPDATE");
-		btnupdate.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		btnupdate.setBounds(476, 519, 117, 29);
-		pnlcreateuser.add(btnupdate);
-		
-		JButton btndelete = new JButton("Delete");
-		btndelete.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		btndelete.setBounds(634, 523, 117, 29);
-		pnlcreateuser.add(btndelete);
-		
-		JLabel lblNewLabel_4_1_1_1_1_1_1 = new JLabel("Mobail number");
-		lblNewLabel_4_1_1_1_1_1_1.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		lblNewLabel_4_1_1_1_1_1_1.setBounds(426, 452, 86, 13);
-		pnlcreateuser.add(lblNewLabel_4_1_1_1_1_1_1);
-		
-		JLabel imglbl = new JLabel("New label");
-		imglbl.setBounds(955, 24, 142, 128);
-		pnlcreateuser.add(imglbl);
-		imglbl.setBorder(BorderFactory.createLineBorder(Color.GRAY, 2));
-
-		 JFileChooser fileChooser = new JFileChooser();
-	        FileNameExtensionFilter filter = new FileNameExtensionFilter(
-	                "Image Files", "jpg", "jpeg", "png", "gif");
-	        fileChooser.setFileFilter(filter);
-	        final File[] selectedImageFile = {null};
-	        
-		
-		JButton cbtnclear = new JButton("CLEAR");
-		cbtnclear.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		cbtnclear.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				clearfields();
-			}
-		});
-		cbtnclear.setBounds(145, 519, 117, 29);
-		pnlcreateuser.add(cbtnclear);
-		
-		JButton btnNewButton = new JButton("Add Photo");
-		btnNewButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				  JFileChooser chooser = new JFileChooser();
-		            FileNameExtensionFilter filter = new FileNameExtensionFilter("Images", "jpg", "png", "jpeg");
-		            chooser.setFileFilter(filter);
-
-		            int result = chooser.showOpenDialog(null);
-		            if (result == JFileChooser.APPROVE_OPTION) {
-		                selectedImageFile[0] = chooser.getSelectedFile();
-		                ImageIcon icon = new ImageIcon(selectedImageFile[0].getAbsolutePath());
-		                Image img = icon.getImage().getScaledInstance(200, 200, Image.SCALE_SMOOTH);
-		                imglbl.setIcon(new ImageIcon(img));
-		            }}
 	
+					        int rows = st.executeUpdate();
+					        JOptionPane.showMessageDialog(null, "Successfully inserted Data into database");
+	
+					        Con.close();
+	
+					    } catch (ClassNotFoundException e1) {
+					        e1.printStackTrace();
+					    } catch (SQLException | HeadlessException ex) {
+					        JOptionPane.showMessageDialog(null, ex);
+					        ex.printStackTrace();
+					    }
+				}
+	});
+			Save.setBounds(316, 519, 117, 29);
+			pnlcreateuser.add(Save);
 			
-		});
-		btnNewButton.setBounds(965, 170, 117, 21);
-		pnlcreateuser.add(btnNewButton);
-		
-		JPanel pnlreport = new JPanel();
-		pnlreport.setBackground(SystemColor.inactiveCaption);
-		mainpanel.add(pnlreport, "report");
-		
-		JLabel lblNewLabel_2 = new JLabel("REPORT");
-		pnlreport.add(lblNewLabel_2);
-		
-		JPanel pnlloans = new JPanel();
-		mainpanel.add(pnlloans, "loan");
-		
-		JLabel lblNewLabel_3 = new JLabel("New label");
-		pnlloans.add(lblNewLabel_3);
-		mainpanel.setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{lblNewLabel_1, pnlreport, lblNewLabel_2, pnlcreateuser, pnlloans, lblNewLabel_3, lblNewLabel_4, lblNewLabel_4_1, lblNewLabel_4_1_1, lblNewLabel_4_1_1_1, lblNewLabel_4_1_1_1_1, lblNewLabel_4_1_1_1_1_1, txtaapliname, txtaadhar, txtaddress, txtpan, txtocupation, txtmobailno, txtnamecoappli, txtcoaadhar, txtcoadress, txtcopan, txtcoocupation, txtcomobailno, lblNewLabel_4_1_1_1_1_2, lblNewLabel_4_1_1_1_2, lblNewLabel_4_1_1_2, lblNewLabel_4_1_2, lblNewLabel_4_2, Save, btnupdate, btndelete, lblNewLabel_4_1_1_1_1_1_1, imglbl, cbtnclear, btnNewButton}));
-		
-		
-		JButton createuser = new JButton("Create User");
-		createuser.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				CardLayout cl = ((CardLayout) mainpanel.getLayout());
-				cl.show(mainpanel, "createuser");
-			}
-		
-		});
-		
-		
-		
-		createuser.setBounds(10, 59, 117, 29);
-		Slidebar.add(createuser);
+			JButton btnupdate = new JButton("UPDATE");
+			btnupdate.setFont(new Font("Tahoma", Font.PLAIN, 12));
+			btnupdate.setBounds(476, 519, 117, 29);
+			pnlcreateuser.add(btnupdate);
+			
+			JButton btndelete = new JButton("Delete");
+			btndelete.setFont(new Font("Tahoma", Font.PLAIN, 12));
+			btndelete.setBounds(634, 523, 117, 29);
+			pnlcreateuser.add(btndelete);
+			
+			JLabel lblNewLabel_4_1_1_1_1_1_1 = new JLabel("Mobail number");
+			lblNewLabel_4_1_1_1_1_1_1.setFont(new Font("Tahoma", Font.PLAIN, 12));
+			lblNewLabel_4_1_1_1_1_1_1.setBounds(426, 452, 86, 13);
+			pnlcreateuser.add(lblNewLabel_4_1_1_1_1_1_1);
+			
+			JLabel imglbl = new JLabel("New label");
+			imglbl.setBounds(955, 24, 142, 128);
+			pnlcreateuser.add(imglbl);
+			imglbl.setBorder(BorderFactory.createLineBorder(Color.GRAY, 2));
+	
+			 JFileChooser fileChooser = new JFileChooser();
+		        FileNameExtensionFilter filter = new FileNameExtensionFilter(
+		                "Image Files", "jpg", "jpeg", "png", "gif");
+		        fileChooser.setFileFilter(filter);
+		        final File[] selectedImageFile = {null};
+		        
+			
+			JButton cbtnclear = new JButton("CLEAR");
+			cbtnclear.setFont(new Font("Tahoma", Font.PLAIN, 12));
+			cbtnclear.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					clearfields();
+				}
+			});
+			cbtnclear.setBounds(145, 519, 117, 29);
+			pnlcreateuser.add(cbtnclear);
+			
+			JButton btnNewButton = new JButton("Add Photo");
+			btnNewButton.addActionListener(new ActionListener() {
+			    public void actionPerformed(ActionEvent e) {
+			        Webcam webcam = Webcam.getDefault();
 
-		JButton Loans = new JButton("Loans");
-		Loans.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				CardLayout cl = ((CardLayout) mainpanel.getLayout());
-				cl.show(mainpanel, "loan");
-				System.out.print("helloloan button preesed");
+			        if (webcam == null) {
+			            JOptionPane.showMessageDialog(null, "No webcam detected!");
+			            return;
+			        }
+
+			        webcam.setViewSize(WebcamResolution.VGA.getSize());
+			        webcam.open();
+
+			        BufferedImage image = webcam.getImage();
+			        webcam.close();
+
+			        try {
+			            String filename = "captured_photo.jpg";
+			            ImageIO.write(image, "JPG", new File(filename));
+
+			            ImageIcon icon = new ImageIcon(filename);
+			            Image scaled = icon.getImage().getScaledInstance(200, 200, Image.SCALE_SMOOTH);
+			            imglbl.setIcon(new ImageIcon(scaled));
+			        } catch (Exception ex) {
+			            JOptionPane.showMessageDialog(null, "Error saving image: " + ex.getMessage());
+			            ex.printStackTrace();
+			        }
+			    }
+			});
+
+			btnNewButton.setBounds(965, 170, 117, 21);
+			pnlcreateuser.add(btnNewButton);
+			
+			JPanel pnlreport = new JPanel();
+			pnlreport.setBackground(SystemColor.inactiveCaption);
+			mainpanel.add(pnlreport, "report");
+			
+			JLabel lblNewLabel_2 = new JLabel("REPORT");
+			pnlreport.add(lblNewLabel_2);
+			
+			JPanel pnlloans = new JPanel();
+			mainpanel.add(pnlloans, "loan");
+			
+			JLabel lblNewLabel_3 = new JLabel("New label");
+			pnlloans.add(lblNewLabel_3);
+			mainpanel.setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{lblNewLabel_1, pnlreport, lblNewLabel_2, pnlcreateuser, pnlloans, lblNewLabel_3, lblNewLabel_4, lblNewLabel_4_1, lblNewLabel_4_1_1, lblNewLabel_4_1_1_1, lblNewLabel_4_1_1_1_1, lblNewLabel_4_1_1_1_1_1, txtaapliname, txtaadhar, txtaddress, txtpan, txtocupation, txtmobailno, txtnamecoappli, txtcoaadhar, txtcoadress, txtcopan, txtcoocupation, txtcomobailno, lblNewLabel_4_1_1_1_1_2, lblNewLabel_4_1_1_1_2, lblNewLabel_4_1_1_2, lblNewLabel_4_1_2, lblNewLabel_4_2, Save, btnupdate, btndelete, lblNewLabel_4_1_1_1_1_1_1, imglbl, cbtnclear, btnNewButton}));
+			
+			
+			JButton createuser = new JButton("Create User");
+			createuser.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					CardLayout cl = ((CardLayout) mainpanel.getLayout());
+					cl.show(mainpanel, "createuser");
+				}
+			
+			});
+			
+			
+			
+			createuser.setBounds(10, 59, 117, 29);
+			Slidebar.add(createuser);
+	
+			JButton Loans = new JButton("Loans");
+			Loans.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					CardLayout cl = ((CardLayout) mainpanel.getLayout());
+					cl.show(mainpanel, "loan");
+					System.out.print("helloloan button preesed");
+					
+				}
+			});
+			Loans.setBounds(10, 191, 117, 29);
+			Slidebar.add(Loans);
+			
+		}
+		
+		public Boolean validateform() {
+			
+			if(txtaadhar.getText().trim().isEmpty() ){
+				 JOptionPane.showMessageDialog(null, "Applicant aadhar is required!");
+				  txtaadhar.requestFocus();
+				return false;
 				
 			}
-		});
-		Loans.setBounds(10, 191, 117, 29);
-		Slidebar.add(Loans);
-		
-	}
-	
-	public Boolean validateform() {
-		
-		if(txtaadhar.getText().trim().isEmpty() ){
-			 JOptionPane.showMessageDialog(null, "Applicant aadhar is required!");
-			  txtaadhar.requestFocus();
-			return false;
 			
-		}
-		
-		if (txtaapliname.getText().trim().isEmpty()) {
-			   JOptionPane.showMessageDialog(null, "Applicant name is required!");
-				return false;
-
-		} 
-		if( txtaddress.getText().trim().isEmpty()) {
-			   JOptionPane.showMessageDialog(null, "Applicant address is required!");
-				return false;
-		}
-		if(txtpan.getText().trim().isEmpty()) {
-			   JOptionPane.showMessageDialog(null, "Applicant pan is required!");
-				return false;
-		}
-		if(txtocupation.getText().trim().isEmpty()) {
-			   JOptionPane.showMessageDialog(null, "Applicant occupation is required!");
-				return false;
-		}
-		if(txtmobailno.getText().trim().isEmpty()) {
-			   JOptionPane.showMessageDialog(null, "Applicant mobile number is required!");
-				return false;
-		}
-		if(txtnamecoappli.getText().trim().isEmpty()) {
-			   JOptionPane.showMessageDialog(null, "Co-applicant name is required!");
-				return false;
-		}
-		if(txtcoaadhar.getText().trim().isEmpty()) {
-			   JOptionPane.showMessageDialog(null, "Co-applicant aadhar is required!");
-				return false;
-		}
-         	
-		if(txtcoadress.getText().trim().isEmpty()) {
-			   JOptionPane.showMessageDialog(null, "Co-applicant address is required!");
-				return false;
-				}
-		if(txtcopan.getText().trim().isEmpty()) {
-			   JOptionPane.showMessageDialog(null, "Co-applicant pan is required!");
-		return true;
-		}
-		if(txtcoocupation.getText().trim().isEmpty()) {
-			   JOptionPane.showMessageDialog(null, "Co-applicant occupation is required!");
-				return false;
-		}
-		if(txtcomobailno.getText().trim().isEmpty()) {
-			   JOptionPane.showMessageDialog(null, "Co-applicant mobile number is required!");
-				return false;
-		}
-		
-		
-		
-		
-		// Validate length of fields
-		if(txtaadhar.getText().length() != 12) {
-			   JOptionPane.showMessageDialog(null, "Aadhar number must be 12 digits!");
-				return false;
-				}
-		if(txtmobailno.getText().length() != 10) {
-			   JOptionPane.showMessageDialog(null, "Mobile number must be 10 digits!");
-			   	return false;
-			   	
-		}
-		if(txtcomobailno.getText().length() != 10) {
-			   JOptionPane.showMessageDialog(null, "Co-applicant mobile number must be 10 digits!");
-			   	return false;
-			   	
-		}
-		if(txtpan.getText().length() != 10) {
-			   JOptionPane.showMessageDialog(null, "Pan number must be 10 digits!");
-			   	return false;
-			   	
-		
-		}
-		if(txtcopan.getText().length() != 10) {
-			   JOptionPane.showMessageDialog(null, "Co-applicant pan number must be 10 digits!");
-			   	return false;
-		}
-		if(txtaapliname.getText().length() < 3) {
-			   JOptionPane.showMessageDialog(null, "Applicant name must be at least 3 characters long!");
-			   	return false;
-		}
-
-		if(txtnamecoappli.getText().length() < 3) {
-			   JOptionPane.showMessageDialog(null, "Co-applicant name must be at least 3 characters long!");
-			   	return false;
-		}
-
-		if(txtaddress.getText().length()< 5)
-		{
-			JOptionPane.showMessageDialog(null,"Application address must be at least 5 characters long!");
-			return false;
-			
-		}
-				return true;
-	}
-		
-	void clearfields() {
-		txtaapliname.setText("");
-		txtaadhar.setText("");
-		txtaddress.setText("");
-		txtpan.setText("");
-		txtocupation.setText("");
-		txtmobailno.setText("");
-		txtnamecoappli.setText("");
-		txtcoaadhar.setText("");
-		txtcoadress.setText("");
-		txtcopan.setText("");
-		txtcoocupation.setText("");
-		txtcomobailno.setText("");
-	}
-
-		// createuserpanel();
-		
-	//loan();
-		
-		
+			if (txtaapliname.getText().trim().isEmpty()) {
+				   JOptionPane.showMessageDialog(null, "Applicant name is required!");
+					return false;
 	
-}
+			} 
+			if( txtaddress.getText().trim().isEmpty()) {
+				   JOptionPane.showMessageDialog(null, "Applicant address is required!");
+					return false;
+			}
+			if(txtpan.getText().trim().isEmpty()) {
+				   JOptionPane.showMessageDialog(null, "Applicant pan is required!");
+					return false;
+			}
+			if(txtocupation.getText().trim().isEmpty()) {
+				   JOptionPane.showMessageDialog(null, "Applicant occupation is required!");
+					return false;
+			}
+			if(txtmobailno.getText().trim().isEmpty()) {
+				   JOptionPane.showMessageDialog(null, "Applicant mobile number is required!");
+					return false;
+			}
+			if(txtnamecoappli.getText().trim().isEmpty()) {
+				   JOptionPane.showMessageDialog(null, "Co-applicant name is required!");
+					return false;
+			}
+			if(txtcoaadhar.getText().trim().isEmpty()) {
+				   JOptionPane.showMessageDialog(null, "Co-applicant aadhar is required!");
+					return false;
+			}
+	         	
+			if(txtcoadress.getText().trim().isEmpty()) {
+				   JOptionPane.showMessageDialog(null, "Co-applicant address is required!");
+					return false;
+					}
+			if(txtcopan.getText().trim().isEmpty()) {
+				   JOptionPane.showMessageDialog(null, "Co-applicant pan is required!");
+			return true;
+			}
+			if(txtcoocupation.getText().trim().isEmpty()) {
+				   JOptionPane.showMessageDialog(null, "Co-applicant occupation is required!");
+					return false;
+			}
+			if(txtcomobailno.getText().trim().isEmpty()) {
+				   JOptionPane.showMessageDialog(null, "Co-applicant mobile number is required!");
+					return false;
+			}
+			
+			
+			
+			
+			// Validate length of fields
+			if(txtaadhar.getText().length() != 12) {
+				   JOptionPane.showMessageDialog(null, "Aadhar number must be 12 digits!");
+					return false;
+					}
+			if(txtmobailno.getText().length() != 10) {
+				   JOptionPane.showMessageDialog(null, "Mobile number must be 10 digits!");
+				   	return false;
+				   	
+			}
+			if(txtcomobailno.getText().length() != 10) {
+				   JOptionPane.showMessageDialog(null, "Co-applicant mobile number must be 10 digits!");
+				   	return false;
+				   	
+			}
+			if(txtpan.getText().length() != 10) {
+				   JOptionPane.showMessageDialog(null, "Pan number must be 10 digits!");
+				   	return false;
+				   	
+			
+			}
+			if(txtcopan.getText().length() != 10) {
+				   JOptionPane.showMessageDialog(null, "Co-applicant pan number must be 10 digits!");
+				   	return false;
+			}
+			if(txtaapliname.getText().length() < 3) {
+				   JOptionPane.showMessageDialog(null, "Applicant name must be at least 3 characters long!");
+				   	return false;
+			}
+	
+			if(txtnamecoappli.getText().length() < 3) {
+				   JOptionPane.showMessageDialog(null, "Co-applicant name must be at least 3 characters long!");
+				   	return false;
+			}
+	
+			if(txtaddress.getText().length()< 5)
+			{
+				JOptionPane.showMessageDialog(null,"Application address must be at least 5 characters long!");
+				return false;
+				
+			}
+					return true;
+		}
+			
+		void clearfields() {
+			txtaapliname.setText("");
+			txtaadhar.setText("");
+			txtaddress.setText("");
+			txtpan.setText("");
+			txtocupation.setText("");
+			txtmobailno.setText("");
+			txtnamecoappli.setText("");
+			txtcoaadhar.setText("");
+			txtcoadress.setText("");
+			txtcopan.setText("");
+			txtcoocupation.setText("");
+			txtcomobailno.setText("");
+		}
+	
+			// createuserpanel();
+			
+		//loan();
+			
+			
+		
+	}
