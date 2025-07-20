@@ -11,5 +11,8 @@
 	<classpathentry kind="lib" path="com.miglayout.swing_11.4.2.jar"/>
 	<classpathentry kind="lib" path="com.miglayout.core_11.4.2.jar"/>
 	<classpathentry kind="lib" path="C:/Users/prana/OneDrive/Desktop/TEMP DOWNLOD/mysql-connector-j-8.0.31.jar"/>
+	<classpathentry kind="lib" path="D:/Eclipse/cap/bridj-0.7.0.jar"/>
+	<classpathentry kind="lib" path="D:/Eclipse/cap/slf4j-api-1.7.2.jar"/>
+	<classpathentry kind="lib" path="D:/Eclipse/cap/webcam-capture-0.3.12.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
